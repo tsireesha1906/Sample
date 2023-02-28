@@ -1,0 +1,43 @@
+<table border="2">
+  <tr>
+    <th>
+      Name
+    </th>
+    <th>
+      Country Name
+    </th>
+    <th>
+      Description
+    </th>
+    <th> actions</th>
+    </tr>
+  <tr>
+
+   <% @state.each do |s| %>
+    <td>
+      <%= s.name %>
+    </td>
+      <td>
+
+
+        <%= Country.find_by_id(s.country_id).try(:name) %>
+      </td>
+      </td>
+      <td>
+        <%= s.description %>
+      </td>
+
+
+        <td>
+          <%=link_to "Edit states", controller: "states", action: "edit",id: s.id%>
+
+           <%= button_to "Destroy this state", s, method: :delete %>
+        </td>
+      </tr>
+
+
+    <%end %>
+
+
+</table>
+<%=link_to "Add states", controller: "states", action: "new"%>

@@ -1,0 +1,53 @@
+<table border="2">
+  <tr>
+    <th>
+      Name
+    </th>
+    <th>
+      Address
+    </th>
+    <th>
+      Location
+    </th>
+    <th>
+      Strength
+    </th>
+        <th>
+      City Name
+    </th>
+    <th> actions</th>
+  </tr>
+  <tr>
+
+    <% @college.each do |c| %>
+      <td>
+        <%= c.name %>
+      </td>
+      <td>
+        <%= c.address %>
+      </td>
+      <td>
+        <%= c.location %>
+      </td>
+      <td>
+
+        <%= c.strength %>
+      </td>
+      <td>
+        <%= City.find_by_id(c.city_id).try(:name) %>
+      </td>
+      </td>
+
+      <td>
+        <%=link_to "Edit colleges", controller: "colleges", action: "edit",id: c.id%>
+
+        <%= button_to "Destroy this college", c, method: :delete %>
+      </td>
+      </tr>
+
+
+    <%end %>
+
+
+    </table>
+<%=link_to "Add colleges", controller: "colleges", action: "new"%>

@@ -1,0 +1,57 @@
+<table border="2">
+  <tr>
+    <th>
+      Name
+    </th>
+    <th>
+      Address
+    </th>
+    <th>
+      Description
+    </th>
+    <th>
+      Landmark
+    </th>
+    <th>
+    State Name
+  </th>
+    <th> actions</th>
+  </tr>
+  <tr>
+
+    <% @city.each do |c| %>
+      <td>
+        <%= c.name %>
+      </td>
+
+      <td>
+        <%= c.address %>
+      </td>
+
+      <td>
+        <%= c.description %>
+      </td>
+
+      <td>
+        <%= c.landmark %>
+      </td>
+
+      <td>
+        <%= State.find_by_id(c.state_id).try(:name) %>
+      </td>
+      </td>
+
+      <td>
+        <%=link_to "Edit cities", controller: "cities", action: "edit",id: c.id%>
+
+        <%= button_to "Destroy this city", c, method: :delete %>
+      </td>
+           </tr>
+
+
+    <%end %>
+
+
+    </table>
+
+<%=link_to "Add cities", controller: "cities", action: "new"%>

@@ -1,0 +1,68 @@
+<table border="2">
+  <tr >
+    <th>
+      Name
+    </th>
+    <th>
+      Address
+    </th>
+    <th>
+      Gender
+    </th>
+    <th>
+      College Name
+    </th>
+    <th>
+      Rollnumber
+    </th>
+    <th>
+      Section
+    </th>
+    <th>
+      Student Class
+    </th>
+       <th> actions</th>
+  </tr>
+  <tr >
+
+    <% @student.each do |t| %>
+      <td>
+        <%= t.name %>
+      </td>
+
+      <td>
+        <%= t.address %>
+      </td>
+
+      <td>
+        <%= t.gender %>
+      </td>
+
+      <td>
+        <%= College.find_by_id(t.college_id).try(:name) %>
+      </td>
+      </td>
+      <td>
+        <%= t.rollnumber %>
+      </td>
+      <td>
+        <%= t.student_class %>
+      </td>
+      <td>
+        <%= t.section %>
+      </td>
+
+      <td>
+        <%=link_to "Edit students", controller: "students", action: "edit",id: t.id%>
+
+        <%= button_to "Destroy this student", t, method: :delete %>
+      </td>
+      </tr>
+
+
+    <%end %>
+
+
+    </table>
+
+<%=link_to "Add Students", controller: "students", action: "new"%>

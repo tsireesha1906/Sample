@@ -1,0 +1,10 @@
+<%= simple_form_for @student do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.collection_radio_buttons :gender, [['true', 'Male'], ['false', 'Female']], :first, :last%>
+  <%= f.input :college_id, collection: College.all %>
+  <%= f.input :section, collection: ["A", "B"] %>
+  <%= f.input :student_class, collection: (0..9) %>
+  <%= f.input :rollnumber %>
+  <%= f.button :submit %>
+ <% end %>

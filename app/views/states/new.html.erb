@@ -1,0 +1,6 @@
+<%= simple_form_for @state do |f| %>
+  <%= f.input :name %>
+  <%= f.input :country_id, collection: Country.all %>
+  <%= f.input :description %>
+  <%= f.button :submit %>
+<% end %>

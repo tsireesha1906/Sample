@@ -1,0 +1,60 @@
+<table border="2">
+  <tr >
+    <th>
+      Name
+    </th>
+    <th>
+      Rollnumber
+    </th>
+    <th>
+      Section
+    </th>
+    <th>
+      Student Class
+    </th>
+    <th>
+      Attendance Status
+    </th>
+    <th>Date</th>
+    <th>Number of days present in a month</th>
+    <th> actions</th>
+  </tr>
+  <tr >
+
+    <% @attendance.each do |t| %>
+      <td>
+         <%= Student.find_by_id(t.student_id).try(:name) %>
+      </td>
+
+         <td>
+        <%= Student.find_by_id(t.student_id).try(:rollnumber) %>
+      </td>
+      </td>
+      <td>
+        <%= Student.find_by_id(t.student_id).try(:section) %>
+      </td>
+      <td>
+        <%= Student.find_by_id(t.student_id).try(:student_class) %>
+      </td>
+           <td>
+        <%= t.attendance_status %>
+      </td>
+<td>
+
+
+</td>
+      <td>t.months</td>
+      <td>
+        <%=link_to "Edit attendance", controller: "attendances", action: "edit",id: t.id%>
+
+        <%= button_to "Destroy this attendance", t, method: :delete %>
+      </td>
+      </tr>
+
+
+    <%end %>
+
+
+    </table>
+
+<%=link_to "Add attendance", controller: "attendances", action: "new"%>

@@ -1,0 +1,8 @@
+<%= simple_form_for @college do |f| %>
+  <%= f.input :name %>
+  <%= f.input :city_id, collection: City.all %>
+  <%= f.input :address %>
+  <%= f.input :location %>
+  <%= f.button :submit %>
+<% end %>
+
